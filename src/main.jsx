@@ -7,24 +7,34 @@ import { RouterProvider } from "react-router/dom";
 import Root from "./Routes/Root/Root.jsx";
 import Home from "./Pages/Home/Home.jsx";
 import ErrorPage from "./Pages/ErrorPage/ErrorPage.jsx";
+import Listed from "./component/Listed/Listed.jsx";
+import PageRead from "./component/PageRead/PageRead.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: Root,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         index: "true",
         path: "/",
-        errorElement: <ErrorPage></ErrorPage>,
         Component: Home,
+      },
+      {
+        path: "/listed",
+        Component: Listed,
+      },
+      {
+        path: "/pageRead",
+        Component: PageRead,
       },
     ],
   },
   {
     path: "*",
     Component: ErrorPage,
-  }
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
