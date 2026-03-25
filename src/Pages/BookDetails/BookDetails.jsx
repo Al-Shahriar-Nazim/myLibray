@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoredDB } from "../../utility/addToDB";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -11,7 +12,23 @@ const BookDetails = () => {
   const singleBook = data.find((book) => book.bookId === bookId);
   // console.log(singleBook)
 
-  const { bookName, image, author, category, review, tags,totalPages,publisher,yearOfPublishing,rating } = singleBook;
+  const {
+    bookName,
+    image,
+    author,
+    category,
+    review,
+    tags,
+    totalPages,
+    publisher,
+    yearOfPublishing,
+    rating,
+  } = singleBook;
+
+  // add to db
+  const handleMarkAsRead = (id) => {
+    addToStoredDB(id);
+  };
   return (
     <div className="max-w-5xl mx-auto p-6 bg-white rounded-2xl shadow-md flex flex-col md:flex-row gap-8">
       {/* Left Image */}
@@ -45,7 +62,8 @@ const BookDetails = () => {
             <strong>Number of Pages:</strong> {totalPages}
           </p>
           <p>
-            <strong>Publisher:</strong>{publisher}
+            <strong>Publisher:</strong>
+            {publisher}
           </p>
           <p>
             <strong>Year of Publishing:</strong> {yearOfPublishing}
@@ -57,7 +75,10 @@ const BookDetails = () => {
 
         {/* Buttons */}
         <div className="flex gap-3">
-          <button className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition">
+          <button
+            onClick={() => handleMarkAsRead(id)}
+            className="px-4 py-2 bg-gray-200 rounded-md hover:bg-gray-300 transition"
+          >
             Mark As Read
           </button>
           <button className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">
