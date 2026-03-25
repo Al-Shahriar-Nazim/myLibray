@@ -1,10 +1,11 @@
 import React from "react";
+import { Link } from "react-router";
 
 const Book = ({ singleBook }) => {
-  console.log(singleBook);
-  const { bookName, author, image, tags, rating, category} = singleBook;
+  //   console.log(singleBook);
+  const { bookName, author, image, tags, rating, category,bookId} = singleBook;
   return (
-    <div>
+    <Link to={`/bookDetails/${bookId}`}>
       <div className="p-3 md:p-5 bg-white rounded-2xl shadow-md  transition-all duration-300 hover:shadow-xl hover:-translate-y-1 w-[80%] md:w-full mx-auto">
         {/* Image */}
         <div className="bg-gray-100 rounded-xl flex items-center justify-center h-40 mb-4">
@@ -36,7 +37,7 @@ const Book = ({ singleBook }) => {
           <span className="flex items-center gap-1">{rating} ⭐</span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

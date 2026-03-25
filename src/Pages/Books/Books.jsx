@@ -11,7 +11,7 @@ const Books = ({ data }) => {
   //         setAllBooks(data)
   //     })
   // },[])
-  console.log(data);
+//   console.log(data);
   return (
     <div className="mt-5 max-w-6xl mx-auto">
       <h3 className="text-2xl font-semibold text-center my-5 "> All Books</h3>
