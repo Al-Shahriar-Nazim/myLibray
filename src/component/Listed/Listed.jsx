@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import { getStoredBook } from "../../utility/addToDB";
 import MarkBook from "./MarkBook";
+ import { ToastContainer, toast } from 'react-toastify';
 
 const Listed = () => {
   const [readList, setReadList] = useState([]);
@@ -27,6 +28,7 @@ const Listed = () => {
 
   const handleShort = (type) => {
     setShort(type);
+    toast("Wow so easy!")
     if (type === "pages") {
       const shortByPage = [...readList].sort(
         (a, b) => a.totalPages - b.totalPages,
@@ -53,6 +55,7 @@ const Listed = () => {
         >
           Short By : {short ? short : ""}
         </div>
+           <ToastContainer />
         <ul
           tabIndex="-1"
           className="dropdown-content menu bg-base-100 rounded-box z-1 w-52 p-2 shadow-sm"
